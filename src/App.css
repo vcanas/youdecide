@@ -112,3 +112,27 @@ a{
   margin-left: 10px;
 }
 
+.headerLink{
+    color: rgb(150, 0, 0);
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.headerLink:hover{
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

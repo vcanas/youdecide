@@ -1,26 +1,20 @@
 import React from "react";
 import {connect} from "react-redux";
+import YoutubePlayer from "react-youtube-player";
 
 class Library extends React.Component{
 
-    constructor(props){
-        super(props);
-        this.state = {
-            items: []
-        };
-    }
-
-    componentDidMount(){
-        this.props.subscribe(()=>{
-            this.setState({
-                videos: this.props.getState().videos
-            });
-        });
-    }
-
     render(){
+        console.log(this.props.videos)
         return (
-            <span>mkay</span>
+            <div>
+                <h1 style={{color: "rgb(150, 0, 0)"}}>Your Library</h1>
+                {Object.entries(this.props.videos['videos']).map((key, value) => {
+                    return <YoutubePlayer key={key} videoId={key[1]}
+                                   playbackState='unstarted'/>
+
+                })}
+            </div>
         );
     }
 }

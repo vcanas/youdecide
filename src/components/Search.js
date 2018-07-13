@@ -18,9 +18,8 @@ const QueryResults = (props) => {
     return (
         <div className="query_results_wrap">
             {Object.entries(props.vids).map(([key, link]) => {
-                console.log(link)
                 return (
-                    <div className="video_wrap">
+                    <div className="video_wrap" key={key}>
                         <Videos key={key} metadata={link}/>
                     </div>
                 );

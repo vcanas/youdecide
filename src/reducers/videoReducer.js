@@ -1,8 +1,12 @@
+const defaultState = {
+    videos: []
+};
 
-export default function videoReducer(state = [], action){
+
+export default function videoReducer(state = defaultState, action){
     switch(action.type){
         case "ADD_VIDEO":
-            return [...state, Object.assign({}, action.video)]
+            return {...state, videos: [...state.videos, action.videoId]}
 
         default:
             return state;

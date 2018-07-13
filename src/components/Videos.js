@@ -10,7 +10,7 @@ class Videos extends React.Component{
         this.state = {
             metadata: {}
         }
-        this.addVideo = this.addVideo.bind(this);
+
     }
 
     componentWillMount(){
@@ -20,8 +20,8 @@ class Videos extends React.Component{
             });
     }
 
-    addVideo(){
-        this.props.dispatch(videoActions.addVideo(this.props.metadata['id']['videoId']));
+    addVideo = () => {
+        this.props.addVideo(this.props.metadata['id']['videoId']);
     }
 
     render(){
@@ -56,7 +56,7 @@ const VideoConsole = (props) => {
     );
 }
 
-const VideoObject = (props) => {
+export const VideoObject = (props) => {
     return (
         <YoutubePlayer videoId={props.meta['id']['videoId']}
                        playbackState='unstarted'/>
@@ -69,6 +69,11 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        addVideo: (videoId) => {dispatch(videoActions.addVideo(videoId))}
+    };
+}
 
 
-export default connect(mapStateToProps)(Videos);
+export default connect(mapStateToProps, mapDispatchToProps)(Videos);
